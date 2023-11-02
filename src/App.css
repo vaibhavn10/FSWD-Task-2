@@ -1,38 +1,235 @@
-.App {
+.Navbar{
+  height: 50px;
+  border-bottom: 1px solid lightgray;
+}
+.Nav-tabs{
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  height: inherit;
+}
+.Navtab{
+  color:#393837;
+  padding: 0px 10px;
+  text-decoration: none;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 100ms linear;
+  border-bottom: none;
+}
+.Navtab:hover{
+  color: #1e1b1b;
+  border-top: 5px solid white;
+  border-bottom: 5px solid #3b82f6;
+  box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.1);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.products{
+  padding: 2vw 5vw;
+  background-color: rgba(243, 243, 243, 0.271);
+  border-top: 1px solid rgba(211, 211, 211, 0.395);
+  border-bottom: 1px solid rgba(211, 211, 211, 0.395);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.list{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card{
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(211, 211, 211, 0.321);
+  border-radius: 5px;
+  overflow: hidden;
+  width:100%;
+  height: 60vh;
+  background-color: white;
+  transition: 0.5s;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0,0, 0.03);
+}
+.card:hover{
+  scale:1.01;
+  box-shadow: 0px 0px 15px 5px rgba(0, 55, 149, 0.1);
+}
+
+.card-img{
+  overflow: hidden;
+  padding: 5px;
+  margin: auto 0px;
+}
+.card img{
+  object-fit: contain;
+  object-position: center;
+  width: -webkit-fill-available;
+  height:  -webkit-fill-available;
+}
+.card-body{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  padding: 0px 15px;
+  height: 0px;
+  border-top: 1px solid rgba(211, 211, 211, 0.321);
+  transition: 0.8s;
+  background-color: rgba(245, 245, 245);
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.card:hover .card-body{
+  padding: 15px 15px;
+  height: 30%;
+}
+.card-tab{
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-weight: 400;
+  font-size: small;
+}
+.card-title{
+  font-size: large;
+  font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
+.pagination{
+  text-align: center;
+  margin: 15px 0px;
+  user-select: none;
+}
+.page-item{
+  transition: 0.15s;
+  scale:0.9;
+}
+.page-item:hover{
+  scale:1.1;
+}
+.pagination li{
+  display: inline-block;
+  margin: 5px;
+  box-shadow: 0 5px 25px rgba(1,1,1,0.1);
+}
+.pagination li a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 35px;
+}
+.prev-page, .next-page{
+  background: #0AB1CE;
+  width: 60px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.curr-page{
+  background: #ccc;
+  width: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.active{
+  background: #0AB1CE;
+  scale:1.1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.dropdown{
+  display:inline-flex;
+  position: relative;
+  flex-direction: column;
+}
+.dropdownbtn{
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dropdown-menu{
+  position: absolute;
+  display: none;
+  min-width: max-content;
+  z-index: 1;
+  top: 30px;
+  right: -50%;
+  padding: 2px 0px;
+  background-color: #e8f3ff;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.dropdown-tab{
+  padding: 10px 5px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+.dropdown-tab:hover{
+  border: none;
+  background-color: rgb(235, 235, 235);
+}
+
+.dropdown:hover .dropdown-menu{
+  display:block;
+}
+
+@media screen and (max-width:580px) {
+  .card{
+    height: 40vh;
   }
-  to {
-    transform: rotate(360deg);
+  .list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+  .card-tab{
+    display:flex;
+    flex-direction: row;
+    font-size: 12px;
+  }
+  .card-body{
+    padding: 15px;
+    height: 30%;
+    overflow-y: scroll;
+  }
+}
+@media screen and (max-width:440px) {
+  .list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .card{
+    flex: 30%;
+    height: 35vh;
+  }
+  .card-title{
+    font-size: medium;
+  }
+}
+
+.spinner{
+  height: 30px;
+  width: 30px;
+  border-top: 5px solid rgb(0, 123, 255);
+  border-left: 5px solid lightgray;
+  border-bottom: 5px solid lightgray;
+  border-right: 5px solid lightgray;
+  border-radius: 50px;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  0%{
+      transform: rotate(0deg);
+  }
+  100%{
+      transform: rotate(360deg);
   }
 }
